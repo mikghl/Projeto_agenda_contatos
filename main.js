@@ -21,11 +21,13 @@ function adicionaLinha() {
 
     const numeroTelefone = parseInt(inputNumeroContato.value)
 
-    if (numeros.includes(numeroTelefone)) {
-        alert(`O contado de número: ${inputNumeroContato.value} já foi adicionado.`)
+    if (isNaN(numeroTelefone) || numeroTelefone < 100000000) {
+        alert("O número de telefone deve ter pelo menos 9 dígitos.");
+    } else if (numeros.includes(numeroTelefone)) {
+        alert(`O contato de número: ${numeroTelefone} já foi adicionado.`);
     } else {
         nomes.push(inputNomeContato.value);
-        numeros.push(parseInt(numeroTelefone));
+        numeros.push(numeroTelefone);
 
         let linha = '<tr>';
         linha += `<td>${inputNomeContato.value}</td>`;
@@ -35,8 +37,8 @@ function adicionaLinha() {
 
         linhas += linha;
     }
-    inputNomeContato.value = ''
-    inputNumeroContato.value = ''
+    inputNomeContato.value = '';
+    inputNumeroContato.value = '';
 }
 // Aqui essa função atualiza a tabela por meio do innerHTML
 
